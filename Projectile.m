@@ -1,10 +1,13 @@
-%% Determine Angle to be launched at
+%% Lab 2: Calculating the angle of launch, the distance we need to pull,
+%and the energy required to launch it
+% Eugenia Kritsuk, Jake Wang, Madeleine Drefke
 
-function [angle, energy] = launch(mProj, distHoleX, distHoleY, distTarX)
-
+function [angle, distPull, energy] = Projectile(mProj, kBands, ...
+    distHoleX, distHoleY, distTarX)
 %% inputs
 % "mProj" is the mass of the accelerometer container + the mass of the
 % accelerometer itself in kg
+% "kBand" is the elastic constant associated with the rubber bands in N/m
 % "distHoleX" is the horizontal distance between the launch point and the
 % wall in m
 % "distHoleY" is the height of the midpoint  of the hole in the wall in m
@@ -36,4 +39,5 @@ angle1 = double(solnStruct.angle0);
 
 %% return values of distance to be pulled and the angle at which to launch
 angle = mod(angle1*180/pi, 360) - 180; %output1
+distPull = 100*sqrt(mProj/kBands*v0^2); %output2
 energy = 1/2*mProj*v0^2; %output3
